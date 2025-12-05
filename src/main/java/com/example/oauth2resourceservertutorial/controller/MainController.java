@@ -4,6 +4,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.oauth2resourceservertutorial.utils.auth.CurrentAuthContext;
+
 @RestController
 public class MainController {
 
@@ -14,9 +16,8 @@ public class MainController {
 
     @GetMapping("/private")
     public String privateRoute() {
-
+        return CurrentAuthContext.getClaims();
 //        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "Private Route";
     }
 
 

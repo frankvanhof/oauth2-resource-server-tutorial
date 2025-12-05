@@ -7,7 +7,16 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import java.util.Map;
 
 public class CurrentAuthContext {
+    public static final String extractClaim = null;
+
     private static Map<String, Object> extractClaim() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        Map<String, Object> claims = ((Jwt) principal).getClaims();
+        return claims;
+    }
+
+    private static Map<String, Object> extractScope() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
         Map<String, Object> claims = ((Jwt) principal).getClaims();
@@ -16,5 +25,9 @@ public class CurrentAuthContext {
 
     public static String getUserEmail() {
         return (String) extractClaim().get("email");
+    }
+
+    public static String getClaims() {
+        return extractClaim().toString();
     }
 }
