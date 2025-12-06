@@ -1,55 +1,70 @@
 package com.example.oauth2resourceservertutorial.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.oauth2resourceservertutorial.utils.auth.CurrentAuthContext;
 
+import java.util.Map;
+import java.util.Optional;
+
 @RestController
 public class MainController {
 
     @GetMapping("/public")
-    public String homePage() {
-        return "Hello from Spring boot app";
+    public ResponseEntity<String> homePage() {
+        return ResponseEntity.ok("Hello from Spring boot app");
     }
 
     @GetMapping("/private")
-    public String privateRoute() {
-        return CurrentAuthContext.getClaims();
+    public ResponseEntity<Map<String, Object>> privateRoute() {
+        // Return a small, explicit subset of claims rather than everything
+        return ResponseEntity.ok(Map.of(
+                "username", Optional.ofNullable(CurrentAuthContext.getUserName()).orElse("anonymous"),
+                "scope", Optional.ofNullable(CurrentAuthContext.getScope()).orElse(""),
+                "roles", CurrentAuthContext.getResourceAccess()));
+    }
+
+    @GetMapping("/claims")
+    public ResponseEntity<String> claimsRoute() {
+        return CurrentAuthContext.getClaims().isEmpty()
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(CurrentAuthContext.getClaims());
     }
 
     @GetMapping("/scope")
-    public String scopeRoute() {
-        return CurrentAuthContext.getScope();
+    public ResponseEntity<String> scopeRoute() {
+        return Optional.ofNullable(CurrentAuthContext.getScope())
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
-    @GetMapping("/email")
-    public String emailRoute() {
-        return CurrentAuthContext.getUserEmail();
+    @GetMapping("/username")
+    public ResponseEntity<String> usernameRoute() {
+        return Optional.ofNullable(CurrentAuthContext.getUserName())
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     @GetMapping("/roles")
-    public String rolRoute() {
-        return CurrentAuthContext.getRoles();
+    public ResponseEntity<String> rolesRoute() {
+        return ResponseEntity.ok(CurrentAuthContext.getRoles());
     }
 
     @GetMapping("/authentication")
-    public String authenticationRoute() {
-        return CurrentAuthContext.getAuthentication();
+    public ResponseEntity<String> authenticationRoute() {
+        return ResponseEntity.ok(CurrentAuthContext.getAuthentication().toString());
     }
 
     @GetMapping("/headers")
-    public String headersRoute() {
-        return CurrentAuthContext.getHeaders();
-    }
-
-    @GetMapping("/hasclaim")
-    public String hasClaimRoute() {
-        return CurrentAuthContext.hasClaim();
+    public ResponseEntity<String> headersRoute() {
+        // Consider removing or protecting this endpoint in production
+        return ResponseEntity.ok(CurrentAuthContext.getHeaders());
     }
 
     @GetMapping("/resourceaccess")
-    public String resourceAccessRoute() {
-        return CurrentAuthContext.getResourceAccess();
+    public ResponseEntity<String> resourceAccessRoute() {
+        return ResponseEntity.ok(CurrentAuthContext.getResourceAccess());
     }
 }

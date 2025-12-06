@@ -10,3 +10,4 @@ public class Oauth2ResourceServerTutorialApplication {
 		SpringApplication.run(Oauth2ResourceServerTutorialApplication.class, args);
 	}
 }
+	
