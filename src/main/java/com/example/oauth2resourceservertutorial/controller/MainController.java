@@ -1,6 +1,5 @@
 package com.example.oauth2resourceservertutorial.controller;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +16,40 @@ public class MainController {
     @GetMapping("/private")
     public String privateRoute() {
         return CurrentAuthContext.getClaims();
-//        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
+    @GetMapping("/scope")
+    public String scopeRoute() {
+        return CurrentAuthContext.getScope();
+    }
 
+    @GetMapping("/email")
+    public String emailRoute() {
+        return CurrentAuthContext.getUserEmail();
+    }
+
+    @GetMapping("/roles")
+    public String rolRoute() {
+        return CurrentAuthContext.getRoles();
+    }
+
+    @GetMapping("/authentication")
+    public String authenticationRoute() {
+        return CurrentAuthContext.getAuthentication();
+    }
+
+    @GetMapping("/headers")
+    public String headersRoute() {
+        return CurrentAuthContext.getHeaders();
+    }
+
+    @GetMapping("/hasclaim")
+    public String hasClaimRoute() {
+        return CurrentAuthContext.hasClaim();
+    }
+
+    @GetMapping("/resourceaccess")
+    public String resourceAccessRoute() {
+        return CurrentAuthContext.getResourceAccess();
+    }
 }
