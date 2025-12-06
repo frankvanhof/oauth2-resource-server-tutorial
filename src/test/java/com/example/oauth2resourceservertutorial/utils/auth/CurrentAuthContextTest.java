@@ -70,6 +70,7 @@ class CurrentAuthContextTest {
         Jwt mockJwt = mock(Jwt.class);
         when(mockJwt.getHeaders()).thenReturn(headers);
         when(mockJwt.getClaims()).thenReturn(claims);
+        when(mockJwt.getClaim("resource_access")).thenReturn(claims.get("resource_access"));
         when(mockJwt.hasClaim("bevolken-api")).thenReturn(true);
         when(mockJwt.hasClaim("missing-claim")).thenReturn(false);
 
@@ -210,7 +211,7 @@ class CurrentAuthContextTest {
         when(securityContext.getAuthentication()).thenReturn(authentication);
         when(authentication.toString()).thenReturn("MockAuthentication");
 
-        assertEquals("MockAuthentication", CurrentAuthContext.getAuthentication().toString());
+        assertEquals("MockAuthentication", CurrentAuthContext.getTheAuthentication());
     }
 
     // ========== Tests for edge cases ==========
