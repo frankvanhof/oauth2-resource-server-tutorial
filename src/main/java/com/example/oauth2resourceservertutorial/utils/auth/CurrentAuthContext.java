@@ -13,6 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 
+
 /**
  * Utility class for accessing the current authenticated JWT and common claims from Spring Security's SecurityContext.
  *
