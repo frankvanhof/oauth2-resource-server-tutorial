@@ -1,0 +1,484 @@
+{
+  "name": "api",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "authentication",
+      "filename": "authentication.bru",
+      "seq": 7,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/authentication",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "claims copy",
+      "filename": "claims copy.bru",
+      "seq": 11,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/claims",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "password",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "username": "test",
+            "password": "test",
+            "clientId": "venzportaal",
+            "clientSecret": "zQMZsJaUbAvTJToCE1P7YuMtt9O276YZ",
+            "scope": "",
+            "credentialsPlacement": "basic_auth_header",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "claims",
+      "filename": "claims.bru",
+      "seq": 10,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/claims",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "headers",
+      "filename": "headers.bru",
+      "seq": 8,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/headers",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "private",
+      "filename": "private.bru",
+      "seq": 3,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/private",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "public",
+      "filename": "public.bru",
+      "seq": 2,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/public",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "resource_access",
+      "filename": "resource_access.bru",
+      "seq": 9,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/resourceaccess",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "roles",
+      "filename": "roles.bru",
+      "seq": 6,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/roles",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "scope",
+      "filename": "scope.bru",
+      "seq": 4,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/scope",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "username",
+      "filename": "username.bru",
+      "seq": 5,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://127.0.0.1:8081/username",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "oauth2",
+          "oauth2": {
+            "grantType": "client_credentials",
+            "accessTokenUrl": "http://127.0.0.1:8080/realms/master/protocol/openid-connect/token",
+            "refreshTokenUrl": "",
+            "clientId": "dsb-bevolken-service",
+            "clientSecret": "vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA",
+            "scope": "",
+            "credentialsPlacement": "body",
+            "credentialsId": "credentials",
+            "tokenPlacement": "header",
+            "tokenHeaderPrefix": "Bearer",
+            "tokenQueryKey": "access_token",
+            "autoFetchToken": true,
+            "autoRefreshToken": false,
+            "additionalParameters": {}
+          }
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "api",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0052471160888671875,
+    "filesCount": 10
+  }
+}
