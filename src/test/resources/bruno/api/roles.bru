@@ -1,0 +1,31 @@
+meta {
+  name: roles
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://127.0.0.1:8081/roles
+  body: none
+  auth: oauth2
+}
+
+auth:oauth2 {
+  grant_type: client_credentials
+  access_token_url: http://127.0.0.1:8080/realms/master/protocol/openid-connect/token
+  refresh_token_url: 
+  client_id: dsb-bevolken-service
+  client_secret: vVt0L9LDZEtNFIOL3Zd25IUUzdKIEDMA
+  scope: 
+  credentials_placement: body
+  credentials_id: credentials
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,33 @@
+meta {
+  name: claims copy
+  type: http
+  seq: 11
+}
+
+get {
+  url: http://127.0.0.1:8081/claims
+  body: none
+  auth: oauth2
+}
+
+auth:oauth2 {
+  grant_type: password
+  access_token_url: http://127.0.0.1:8080/realms/master/protocol/openid-connect/token
+  refresh_token_url: 
+  username: test
+  password: test
+  client_id: venzportaal
+  client_secret: zQMZsJaUbAvTJToCE1P7YuMtt9O276YZ
+  scope: 
+  credentials_placement: basic_auth_header
+  credentials_id: credentials
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
