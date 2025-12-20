@@ -1,35 +1,35 @@
 package com.example.oauth2resourceservertutorial.utils.auth;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 
-
 /**
- * Utility class for accessing the current authenticated JWT and common claims from Spring Security's SecurityContext.
+ * Utility class for accessing the current authenticated JWT and common claims
+ * from Spring Security's SecurityContext.
  *
- * <p>Key design principles:
+ * <p>
+ * Key design principles:
  * <ul>
- *   <li>Thread-safe: No mutable static fields; all data extracted locally per call</li>
- *   <li>Null-safe: Null checks after each extraction step; safe defaults returned</li>
- *   <li>Type-safe: Uses instanceof checks instead of unchecked casts where possible</li>
+ * <li>Thread-safe: No mutable static fields; all data extracted locally per
+ * call</li>
+ * <li>Null-safe: Null checks after each extraction step; safe defaults
+ * returned</li>
+ * <li>Type-safe: Uses instanceof checks instead of unchecked casts where
+ * possible</li>
  * </ul>
  *
- * <p>Provides convenient static methods to extract:
+ * <p>
+ * Provides convenient static methods to extract:
  * <ul>
- *   <li>JWT claims (scope, username, roles)</li>
- *   <li>Authentication details</li>
- *   <li>Token headers</li>
- *   <li>Client-specific resource access claims</li>
+ * <li>JWT claims (scope, username, roles)</li>
+ * <li>Authentication details</li>
+ * <li>Token headers</li>
+ * <li>Client-specific resource access claims</li>
  * </ul>
  */
 public final class CurrentAuthContext {
@@ -138,7 +138,8 @@ public final class CurrentAuthContext {
     /**
      * Returns the full Authentication object details.
      *
-     * @return string representation of the Authentication, or "N/A" if not available
+     * @return string representation of the Authentication, or "N/A" if not
+     *         available
      */
     public static String getTheAuthentication() {
         Authentication auth = getAuthentication();
@@ -161,30 +162,19 @@ public final class CurrentAuthContext {
     /**
      * Returns client-specific roles from the JWT resource_access claim.
      *
-     * <p>Extracts roles for the configured resource name ("venzportaal") from the
+     * <p>
+     * Extracts roles for the configured resource name ("venzportaal") from the
      * resource_access claim and converts them to GrantedAuthority instances.
      *
      * @return string representation of client roles, or "[]" if not available
      */
     @SuppressWarnings("unchecked")
     public static String getResourceAccess() {
-        // de aanroeper moet de clientrole van de client hebben
-        final String resourceName = "venzportaal";
-        Collection<GrantedAuthority> resourceAuthorities = new ArrayList<>();
-
         Jwt jwt = getPrincipalJwt();
         if (jwt == null) {
             return "[]";
         }
-
         Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
-        if (resourceAccess != null && resourceAccess.containsKey(resourceName)) {
-            Map<String, Object> clientRoles = (Map<String, Object>) resourceAccess.get(resourceName);
-            if (clientRoles.containsKey("roles")) {
-                List<String> roles = (List<String>) clientRoles.get("roles");
-                roles.forEach(roleName -> resourceAuthorities.add(new SimpleGrantedAuthority(roleName)));
-            }
-        }
-        return resourceAuthorities.toString();
+        return resourceAccess.toString();
     }
 }
