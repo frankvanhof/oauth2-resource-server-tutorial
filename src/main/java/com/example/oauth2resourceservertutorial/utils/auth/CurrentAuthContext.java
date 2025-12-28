@@ -119,7 +119,8 @@ public final class CurrentAuthContext {
      * @return string representation of all claims
      */
     public static String getClaims() {
-        return getClaimsMap().toString();
+        Map<String, Object> claims = getClaimsMap();
+        return claims.isEmpty() ? "" : claims.toString();
     }
 
     /**
@@ -160,21 +161,16 @@ public final class CurrentAuthContext {
     }
 
     /**
-     * Returns client-specific roles from the JWT resource_access claim.
+     * Returns the resource_access claim from the JWT.
      *
-     * <p>
-     * Extracts roles for the configured resource name ("venzportaal") from the
-     * resource_access claim and converts them to GrantedAuthority instances.
-     *
-     * @return string representation of client roles, or "[]" if not available
+     * @return string representation of resource_access, or "[]" if not present
      */
-    @SuppressWarnings("unchecked")
     public static String getResourceAccess() {
         Jwt jwt = getPrincipalJwt();
         if (jwt == null) {
             return "[]";
         }
         Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
-        return resourceAccess.toString();
+        return resourceAccess == null ? "[]" : resourceAccess.toString();
     }
 }

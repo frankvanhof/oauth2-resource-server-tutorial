@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.oauth2resourceservertutorial.utils.auth.CurrentAuthContext;
 
 /**
- * REST controller exposing endpoints for testing OAuth2 authentication and JWT claims extraction.
+ * REST controller exposing endpoints for testing OAuth2 authentication and JWT
+ * claims extraction.
  */
 @RestController
 public class MainController {
@@ -33,10 +34,9 @@ public class MainController {
     @GetMapping("/private")
     public ResponseEntity<Map<String, Object>> privateRoute() {
         return ResponseEntity.ok(Map.of(
-            "username", Optional.ofNullable(CurrentAuthContext.getUserName()).orElse("anonymous"),
-            "scope", Optional.ofNullable(CurrentAuthContext.getScope()).orElse(""),
-            "roles", CurrentAuthContext.getResourceAccess()
-        ));
+                "username", Optional.ofNullable(CurrentAuthContext.getUserName()).orElse("anonymous"),
+                "scope", Optional.ofNullable(CurrentAuthContext.getScope()).orElse(""),
+                "roles", CurrentAuthContext.getResourceAccess()));
     }
 
     /**
@@ -46,9 +46,10 @@ public class MainController {
      */
     @GetMapping("/claims")
     public ResponseEntity<String> claimsRoute() {
-        return CurrentAuthContext.getClaims().isEmpty()
-            ? ResponseEntity.noContent().build()
-            : ResponseEntity.ok(CurrentAuthContext.getClaims());
+        String claims = CurrentAuthContext.getClaims();
+        return claims.isEmpty()
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(claims);
     }
 
     /**
@@ -59,8 +60,8 @@ public class MainController {
     @GetMapping("/scope")
     public ResponseEntity<String> scopeRoute() {
         return Optional.ofNullable(CurrentAuthContext.getScope())
-            .map(ResponseEntity::ok)
-            .orElseGet(() -> ResponseEntity.noContent().build());
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     /**
@@ -71,8 +72,8 @@ public class MainController {
     @GetMapping("/username")
     public ResponseEntity<String> usernameRoute() {
         return Optional.ofNullable(CurrentAuthContext.getUserName())
-            .map(ResponseEntity::ok)
-            .orElseGet(() -> ResponseEntity.noContent().build());
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     /**
